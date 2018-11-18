@@ -33,24 +33,27 @@ fn force_roundtrip(source: Vec<u8>) {
 }
 
 fn large_00(bench: &mut Bencher) {
+  let data = vec![0u8; LIST_LEN];
   bench.iter(|| {
-    force_roundtrip(vec![0u8; LIST_LEN]);
+    let locz = &data;
+    force_roundtrip(locz.to_vec());
   });
   bench.bytes = LIST_LEN as u64;
+
 }
 
 fn large_06(bench: &mut Bencher) {
+  let data = vec![6u8; LIST_LEN];
   bench.iter(|| {
-    force_roundtrip(vec![6u8; 2048]);
+    let locz = &data;
+    force_roundtrip(locz.to_vec());
   });
   bench.bytes = LIST_LEN as u64;
 }
 
-
-
 fn large_typical(bench: &mut Bencher) {
   let data = provide_rand_vec(LIST_LEN);
-  bench.iter( move || {
+  bench.iter(|| {
     let locz = &data;
     force_roundtrip(locz.to_vec());
   });
