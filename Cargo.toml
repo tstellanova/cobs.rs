@@ -17,3 +17,10 @@ use_std = []
 
 [dev-dependencies]
 quickcheck = "^0.5.0"
+bencher = "0.1.5"
+rand = "0.6.0"
+
+
+[[bench]]
+name = "benchmark"
+harness = false
